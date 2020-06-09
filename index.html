@@ -1,16 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
+        <title>Inicio</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale-1">
+        
     </head>
     <body>
         <div id="app">
+            <input type="text" v-model="nuevaFruta" @keyup.enter="setFruta">
+            <button @click="setFruta">agregar</button>
+            <!-- <button v-on:click="setFruta">agregar</button> -->
             <h1>{{titulo}}</h1>
         
             <ul>
                 <li v-for="fruta of frutas">
-                    {{fruta.cantidad}} - {{fruta.nombre}}
+                    <input type="number" v-model.number="fruta.cantidad">
+                    {{fruta.nombre}}
                     <span v-if="fruta.cantidad === 0"> - sin stok</span>
+                    <button @click=fruta.cantidad++>+</button>
                 </li>
             </ul>
+            <h4>total: {{sumarFrutas}} </h4>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="01.js"></script>
