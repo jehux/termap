@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>componentes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="componentes/c01.js"></script>
+    <script src="componentes/c02.js"></script>
+    <title>comunicacion entrre componentes</title>
 </head>
-<body> 
+<body>
     <div id="app">
-        <button-counter></button-counter>
+        <padre></padre>
+
     </div>
     <script>
-
-        // Definir un nuevo componente llamado button-counter
-        Vue.component('button-counter', {
-        data: function () {
-            return {
-            count: 0
-            }
-        },
-        template: //html
-        `
-        <div> 
-            <h3> asdf</h3>
-            <button btn btn-primary v-on:click="count++">Me ha pulsado {{ count }} veces.</button>
-        </div>
-        `
+        new Vue({
+            el:'#app'
         })
-        new Vue({ el: '#app' })
     </script>
-
 </body>
 </html>
