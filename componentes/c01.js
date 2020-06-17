@@ -1,7 +1,6 @@
 Vue.component('padre', {
-    template: //html
-    `
-       <div class="p-5 bg-dark text-white">
+    template:/*html*/ `
+    <div class="p-5 bg-dark text-white">
             <h2> componente padre {{numeroPadre}} </h2>
             <h3>{{nombrePadre}}</h3>
             <hijo :numero="numeroPadre" @nombreHijo="nombrePadre = $event"  ></hijo>
