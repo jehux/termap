@@ -28,15 +28,21 @@
        `
        })
        //componente hijo
+       // $ solo se utiliza en template
        Vue.component('hijo', {
-       template: /*html*/ `
-       <div>
-            <button class="btn btn-danger" @click="$store.commit('decrementar')">-</button>
-            <p>numero: {{$store.state.numero}}</p>
-       </div>
-       `,
-       props:['variable']
+        template: /*html*/ `
+        <div>
+                <button class="btn btn-danger" @click="$store.commit('decrementar')">-</button>
+                <p>numero: {{numero}}</p>
+        </div>
+        `,
+        // ... par hacer un mix de datos en la funcion conputed, se adjuntan los datos a l objeto de computed
+        computed:{
+            //mapState lee todo lo que se encuentre en store de la instancia Vuex.Store
+            ...Vuex.mapState(['numero'])
+        }
        })
+       
        //instancia de Vuex
        const store = new Vuex.Store({
         state: {
