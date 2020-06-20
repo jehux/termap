@@ -32,28 +32,31 @@
        Vue.component('hijo', {
         template: /*html*/ `
         <div>
-                <button class="btn btn-danger" @click="$store.commit('decrementar')">-</button>
+                <button class="btn btn-danger" @click="decrementar(2)">-</button>
                 <p>numero: {{numero}}</p>
         </div>
         `,
         // ... par hacer un mix de datos en la funcion conputed, se adjuntan los datos a l objeto de computed
         computed:{
             //mapState lee todo lo que se encuentre en store de la instancia Vuex.Store
-            ...Vuex.mapState(['numero'])
+            ...Vuex.mapState(['numero']),
+        },
+        methods:{
+            ...Vuex.mapMutations(['aumentar','decrementar'])
         }
        })
        
        //instancia de Vuex
        const store = new Vuex.Store({
         state: {
-            numero: 7
+            numero: 23
         },
         mutations: {
             aumentar (state){
                 state.numero++
             },
-            decrementar (state){
-                state.numero--
+            decrementar (state,n){
+                state.numero-=n
             }
         }
         })
