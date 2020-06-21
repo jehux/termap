@@ -12,7 +12,7 @@
 <body>
     <div id="app">
         <titulo></titulo>  
-    
+
     </div>
 
     <script>
@@ -27,6 +27,7 @@
        </div>
        `
        })
+
        //componente hijo
        // $ solo se utiliza en template
        Vue.component('hijo', {
@@ -34,22 +35,28 @@
         <div>
                 <button class="btn btn-danger" @click="decrementar(2)">-</button>
                 <p>numero: {{numero}}</p>
+                <button class="btn btn-danger" @click="obtenerCursos">obtener Cursos</button>
+                <div class="mt-3" v-for="item of cursos">
+                    {{item.nombre}}
+                </div>
         </div>
         `,
         // ... par hacer un mix de datos en la funcion conputed, se adjuntan los datos a l objeto de computed
         computed:{
             //mapState lee todo lo que se encuentre en store de la instancia Vuex.Store
-            ...Vuex.mapState(['numero']),
+            ...Vuex.mapState(['numero','cursos']),
         },
         methods:{
-            ...Vuex.mapMutations(['aumentar','decrementar'])
+            ...Vuex.mapMutations(['aumentar','decrementar']),
+            ...Vuex.mapActions(['obtenerCursos'])
         }
        })
        
-       //instancia de Vuex
+       //instancia de Vuex 
        const store = new Vuex.Store({
         state: {
-            numero: 23
+            numero: 23,
+            cursos: []
         },
         mutations: {
             aumentar (state){
@@ -57,6 +64,16 @@
             },
             decrementar (state,n){
                 state.numero-=n
+            },
+            llenarCursos (state, cursosAccion){
+                state.cursos = cursosAccion
+            }
+        },
+        actions: {
+            obtenerCursos : async function ({commit}){
+                const data = await fetch('cursos.json')
+                const cursos = await data.json()
+                commit('llenarCursos',cursos)
             }
         }
         })
