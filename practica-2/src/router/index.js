@@ -7,7 +7,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/about',
@@ -20,7 +20,12 @@ Vue.use(VueRouter)
   {
     path:'/otra',
     name:'Otra',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Otra.vue')
+    component: () => import(/* webpackChunkName: "otra" */ '../views/Otra.vue')
+  },
+  {
+    path:'/fotos/:id',
+    name:'Fotos',
+    component: () => import(/* webpackChunkName: "fotos" */ '../views/Fotos.vue')
   }
   
 ]
