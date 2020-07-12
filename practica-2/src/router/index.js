@@ -18,6 +18,11 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path:'/forms',
+    name:'Forms',
+    component: () => import(/* webpackChunkName: "formulario" */ '../views/Forms.vue')
+  },
+  {
     path:'/grid',
     name:'Grid',
     component: () => import(/* webpackChunkName: "grid" */ '../views/Grid.vue')
