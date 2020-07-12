@@ -18,9 +18,9 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path:'/otra',
-    name:'Otra',
-    component: () => import(/* webpackChunkName: "otra" */ '../views/Otra.vue')
+    path:'/grid',
+    name:'Grid',
+    component: () => import(/* webpackChunkName: "grid" */ '../views/Grid.vue')
   },
   {
     path:'/fotos/:id',
